@@ -1,316 +1,906 @@
-import { useState } from 'react'
-import Head from 'next/head'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Support Volunteers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .section-padding {
+            padding: 4rem 1rem;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-secondary {
+            background-color: #059669;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #047857;
+        }
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen bg-white">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">LS</span>
+                        </div>
+                        <span class="ml-3 text-xl font-semibold text-gray-900" id="site-title">
+                            Learning Support Volunteers
+                        </span>
+                    </div>
 
-export default function Home() {
-  const [language, setLanguage] = useState('en')
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex space-x-8 desktop-nav" id="main-nav">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">About Us</a>
+                        <a href="#activities" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Activities</a>
+                        <a href="#join" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Join Us</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </nav>
 
-  const content = {
-    en: {
-      title: 'Learning Support Volunteers',
-      nav: ['Home', 'About Us', 'Activities', 'Join Us', 'Contact'],
-      hero: {
-        title: 'Supporting Foreign Residents in Japan',
-        subtitle: 'Connecting volunteers and learners in a warm community',
-        supportButton: 'I want support',
-        volunteerButton: 'I want to volunteer'
-      },
-      intro: {
-        title: 'About Us',
-        description: 'We support foreign residents in Japan through learning assistance and cultural exchange, helping them live comfortably. Our experienced volunteers conduct various activities including Japanese language learning, life consultation, and cultural exchange events.'
-      },
-      footer: {
-        email: 'info@volunteer-support.jp',
-        copyright: '© 2024 Learning Support Volunteers. All rights reserved.'
-      }
-    },
-    zh: {
-      title: '学习支援志愿者',
-      nav: ['首页', '关于我们', '活动内容', '加入我们', '联系我们'],
-      hero: {
-        title: '支持在日外国人',
-        subtitle: '连接志愿者和学习者的温暖社区',
-        supportButton: '我需要帮助',
-        volunteerButton: '我想成为志愿者'
-      },
-      intro: {
-        title: '关于我们',
-        description: '我们通过学习支援和文化交流来支持在日外国人，帮助他们舒适地生活。我们经验丰富的志愿者开展各种活动，包括日语学习、生活咨询和文化交流活动。'
-      },
-      footer: {
-        email: 'info@volunteer-support.jp',
-        copyright: '© 2024 学习支援志愿者. All rights reserved.'
-      }
-    },
-    fr: {
-      title: 'Bénévoles de Soutien à l\'Apprentissage',
-      nav: ['Accueil', 'À Propos', 'Activités', 'Rejoignez-nous', 'Contact'],
-      hero: {
-        title: 'Soutenir les Résidents Étrangers au Japon',
-        subtitle: 'Connecter les bénévoles et les apprenants dans une communauté chaleureuse',
-        supportButton: 'Je veux du soutien',
-        volunteerButton: 'Je veux être bénévole'
-      },
-      intro: {
-        title: 'À Propos de Nous',
-        description: 'Nous soutenons les résidents étrangers au Japon par l\'assistance à l\'apprentissage et l\'échange culturel, les aidant à vivre confortablement. Nos bénévoles expérimentés mènent diverses activités incluant l\'apprentissage du japonais, les consultations de vie et les événements d\'échange culturel.'
-      },
-      footer: {
-        email: 'info@volunteer-support.jp',
-        copyright: '© 2024 Bénévoles de Soutien à l\'Apprentissage. Tous droits réservés.'
-      }
-    },
-    de: {
-      title: 'Lernunterstützungs-Freiwillige',
-      nav: ['Startseite', 'Über Uns', 'Aktivitäten', 'Mitmachen', 'Kontakt'],
-      hero: {
-        title: 'Unterstützung Ausländischer Einwohner in Japan',
-        subtitle: 'Freiwillige und Lernende in einer warmen Gemeinschaft verbinden',
-        supportButton: 'Ich brauche Unterstützung',
-        volunteerButton: 'Ich möchte Freiwilliger werden'
-      },
-      intro: {
-        title: 'Über Uns',
-        description: 'Wir unterstützen ausländische Einwohner in Japan durch Lernhilfe und kulturellen Austausch und helfen ihnen, komfortabel zu leben. Unsere erfahrenen Freiwilligen führen verschiedene Aktivitäten durch, einschließlich Japanischlernen, Lebensberatung und kulturelle Austauschveranstaltungen.'
-      },
-      footer: {
-        email: 'info@volunteer-support.jp',
-        copyright: '© 2024 Lernunterstützungs-Freiwillige. Alle Rechte vorbehalten.'
-      }
-    }
-  }
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2">
+                        <select id="language-selector" class="border border-gray-300 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                        </select>
+                    </div>
 
-  const currentContent = content[language] || content.en
-
-  return (
-    <>
-      <Head>
-        <title>{currentContent.title}</title>
-        <meta name="description" content="Supporting foreign residents in Japan with learning assistance" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="bg-white shadow-sm sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo */}
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">LS</span>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <span className="ml-3 text-xl font-semibold text-gray-900">
-                  {currentContent.title}
-                </span>
-              </div>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-8">
-                {currentContent.nav.map((item, index) => (
-                  <a
-                    key={index}
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </nav>
-
-              {/* Language Switcher */}
-              <div className="flex items-center space-x-2">
-                <select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                  className="border border-gray-300 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="en">English</option>
-                  <option value="zh">中文</option>
-                  <option value="fr">Français</option>
-                  <option value="de">Deutsch</option>
-                </select>
-              </div>
+                <!-- Mobile Navigation -->
+                <div id="mobile-menu" class="md:hidden hidden">
+                    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">About Us</a>
+                        <a href="#activities" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Activities</a>
+                        <a href="#join" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Join Us</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Contact</a>
+                        <div class="pt-4 pb-3 border-t border-gray-200">
+                            <select id="mobile-language-selector" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="en">English</option>
+                                <option value="zh">中文</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </header>
 
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-blue-50 to-green-50 py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Content */}
-              <div className="text-center lg:text-left">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  {currentContent.hero.title}
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                  {currentContent.hero.subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-lg">
-                    {currentContent.hero.supportButton}
-                  </button>
-                  <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-lg">
-                    {currentContent.hero.volunteerButton}
-                  </button>
-                </div>
-              </div>
-
-              {/* Image Placeholder */}
-              <div className="relative">
-                <div className="bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl p-8 h-96 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-blue-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-br from-blue-50 to-green-50 py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Content -->
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" id="hero-title">
+                            Supporting Foreign Residents in Japan
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed" id="hero-subtitle">
+                            Connecting volunteers and learners in a warm community
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button class="btn-primary" id="support-button">
+                                I want support
+                            </button>
+                            <button class="btn-secondary" id="volunteer-button">
+                                I want to volunteer
+                            </button>
+                        </div>
                     </div>
-                    <p className="text-gray-600 text-lg font-medium">
-                      {language === 'en' && 'Community Photo'}
-                      {language === 'zh' && '社区照片'}
-                      {language === 'fr' && 'Photo de la Communauté'}
-                      {language === 'de' && 'Gemeinschaftsfoto'}
-                    </p>
-                    <p className="text-gray-500 text-sm mt-2">
-                      {language === 'en' && '(Placeholder)'}
-                      {language === 'zh' && '（占位符）'}
-                      {language === 'fr' && '(Espace réservé)'}
-                      {language === 'de' && '(Platzhalter)'}
-                    </p>
-                  </div>
+
+                    <!-- Image Placeholder -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl p-8 h-96 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-24 h-24 bg-blue-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <p class="text-gray-600 text-lg font-medium" id="community-photo">
+                                    Community Photo
+                                </p>
+                                <p class="text-gray-500 text-sm mt-2" id="placeholder-text">
+                                    (Placeholder)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </section>
 
-        {/* Intro Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Content */}
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  {currentContent.intro.title}
-                </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {currentContent.intro.description}
-                </p>
-              </div>
-
-              {/* Image Placeholder */}
-              <div className="relative">
-                <div className="bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl p-8 h-80 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-green-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
+        <!-- About Section -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Content -->
+                    <div class="space-y-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="about-title">
+                            About Us
+                        </h2>
+                        <p class="text-lg text-gray-700 leading-relaxed" id="about-description">
+                            We support foreign residents in Japan through learning assistance and cultural exchange, helping them live comfortably. Our experienced volunteers conduct various activities including Japanese language learning, life consultation, and cultural exchange events.
+                        </p>
                     </div>
-                    <p className="text-gray-600 font-medium">
-                      {language === 'en' && 'Group Activity Photo'}
-                      {language === 'zh' && '团体活动照片'}
-                      {language === 'fr' && 'Photo d\'Activité de Groupe'}
-                      {language === 'de' && 'Gruppenaktivitätsfoto'}
-                    </p>
-                    <p className="text-gray-500 text-sm mt-2">
-                      {language === 'en' && '(Placeholder)'}
-                      {language === 'zh' && '（占位符）'}
-                      {language === 'fr' && '(Espace réservé)'}
-                      {language === 'de' && '(Platzhalter)'}
-                    </p>
-                  </div>
+
+                    <!-- Image Placeholder -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl p-8 h-80 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-green-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                    <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                    </svg>
+                                </div>
+                                <p class="text-gray-600 font-medium" id="group-activity">
+                                    Group Activity Photo
+                                </p>
+                                <p class="text-gray-500 text-sm mt-2" id="group-placeholder">
+                                    (Placeholder)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Group Info */}
-              <div>
-                <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-sm">LS</span>
-                  </div>
-                  <span className="text-xl font-semibold">
-                    {currentContent.title}
-                  </span>
+        <!-- Activities Section -->
+        <section id="activities" class="section-padding bg-gray-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="activities-title">
+                        Activities
+                    </h2>
+                    <p class="text-xl text-gray-600" id="activities-subtitle">
+                        Our Main Activities
+                    </p>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  {language === 'en' && 'A volunteer group supporting foreign residents in Japan.'}
-                  {language === 'zh' && '支持在日外国人的志愿者团体。'}
-                  {language === 'fr' && 'Un groupe de bénévoles soutenant les résidents étrangers au Japon.'}
-                  {language === 'de' && 'Eine Freiwilligengruppe, die ausländische Einwohner in Japan unterstützt.'}
-                </p>
-              </div>
 
-              {/* Contact */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">
-                  {language === 'en' && 'Contact'}
-                  {language === 'zh' && '联系我们'}
-                  {language === 'fr' && 'Contact'}
-                  {language === 'de' && 'Kontakt'}
-                </h3>
-                <div className="space-y-2">
-                  <div className="flex items-center">
-                    <svg className="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <a href={`mailto:${currentContent.footer.email}`} className="text-gray-300 hover:text-white transition-colors">
-                      {currentContent.footer.email}
-                    </a>
-                  </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="card hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">📚</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Japanese Language Classes</h3>
+                            <p class="text-gray-600 leading-relaxed">We support Japanese language learning from beginner to advanced levels.</p>
+                        </div>
+                    </div>
+                    <div class="card hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🎎</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Cultural Exchange Events</h3>
+                            <p class="text-gray-600 leading-relaxed">We hold fun events to experience Japanese culture and share each other's cultures.</p>
+                        </div>
+                    </div>
+                    <div class="card hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🏠</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Consultation</h3>
+                            <p class="text-gray-600 leading-relaxed">We provide consultation for daily life issues and administrative procedures.</p>
+                        </div>
+                    </div>
+                    <div class="card hover:shadow-lg transition-shadow duration-300">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4">🤝</div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Making Friends</h3>
+                            <p class="text-gray-600 leading-relaxed">We provide opportunities for foreigners and Japanese people living in the same area to interact.</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-              {/* Social Media */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">
-                  {language === 'en' && 'Social Media'}
-                  {language === 'zh' && '社交媒体'}
-                  {language === 'fr' && 'Médias Sociaux'}
-                  {language === 'de' && 'Soziale Medien'}
-                </h3>
-                <div className="flex space-x-4">
-                  {/* Facebook Placeholder */}
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                  </a>
-
-                  {/* Twitter Placeholder */}
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                  </a>
-
-                  {/* Instagram Placeholder */}
-                  <a href="#" className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.781c-.49 0-.928-.175-1.297-.49-.368-.315-.49-.753-.49-1.243 0-.49.122-.928.49-1.243.369-.315.807-.49 1.297-.49s.928.175 1.297.49c.368.315.49.753.49 1.243 0 .49-.122.928-.49 1.243-.369.315-.807.49-1.297.49z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
             </div>
+        </section>
 
-            {/* Copyright */}
-            <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-              <p className="text-gray-400">
-                {currentContent.footer.copyright}
-              </p>
+        <!-- Join Us Section -->
+        <section id="join" class="section-padding bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="join-title">
+                        Join Us
+                    </h2>
+                    <p class="text-xl text-gray-600" id="join-subtitle">
+                        Choose the participation method that suits you
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Support Card -->
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4" id="support-card-title">
+                            For Those Who Want Support
+                        </h3>
+                        <p class="text-gray-600 mb-6" id="support-card-description">
+                            We provide various support including Japanese language learning and life consultation. Please feel free to contact us.
+                        </p>
+                        <ul class="space-y-2 mb-6" id="support-features">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Free Japanese language classes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Life consultation services
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Cultural exchange event participation
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Friendship support
+                            </li>
+                        </ul>
+                        <button class="btn-primary w-full" id="support-apply-button">
+                            Apply for Support
+                        </button>
+                    </div>
+
+                    <!-- Volunteer Card -->
+                    <div class="card">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4" id="volunteer-card-title">
+                            For Those Who Want to Join as Volunteers
+                        </h3>
+                        <p class="text-gray-600 mb-6" id="volunteer-card-description">
+                            Would you like to support foreigners using your experience and skills? There are new encounters and learning opportunities.
+                        </p>
+                        <ul class="space-y-2 mb-6" id="volunteer-features">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Activity as Japanese language teacher
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Cultural exchange event planning
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Life consultation support
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Community building
+                            </li>
+                        </ul>
+                        <button class="btn-secondary w-full" id="volunteer-apply-button">
+                            Apply as Volunteer
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="contact-title">
+                        Contact Us
+                    </h2>
+                    <p class="text-xl text-gray-600" id="contact-subtitle">
+                        Please feel free to contact us
+                    </p>
+                </div>
+
+                <div class="card">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" id="name-label">
+                                    Name
+                                </label>
+                                <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="name-input" placeholder="Enter your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" id="email-label">
+                                    Email
+                                </label>
+                                <input type="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="email-input" placeholder="example@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" id="type-label">
+                                Inquiry Type
+                            </label>
+                            <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="type-select">
+                                <option value="support" id="support-option">I want support</option>
+                                <option value="volunteer" id="volunteer-option">I want to volunteer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" id="message-label">
+                                Message
+                            </label>
+                            <textarea rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="message-input" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full" id="submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Group Info -->
+                    <div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <span class="text-white font-bold text-sm">LS</span>
+                            </div>
+                            <span class="text-xl font-semibold" id="footer-title">
+                                Learning Support Volunteers
+                            </span>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed" id="footer-description">
+                            A volunteer group supporting foreign residents in Japan.
+                        </p>
+                    </div>
+
+                    <!-- Contact -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" id="footer-contact">
+                            Contact
+                        </h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <a href="mailto:info@volunteer-support.jp" class="text-gray-300 hover:text-white transition-colors">
+                                    info@volunteer-support.jp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" id="footer-social">
+                            Social Media
+                        </h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.781c-.49 0-.928-.175-1.297-.49-.368-.315-.49-.753-.49-1.243 0-.49.122-.928.49-1.243.369-.315.807-.49 1.297-.49s.928.175 1.297.49c.368.315.49.753.49 1.243 0 .49-.122.928-.49 1.243-.369.315-.807.49-1.297.49z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                    <p class="text-gray-400" id="copyright">
+                        © 2024 Learning Support Volunteers. All rights reserved.
+                    </p>
+                </div>
+            </div>
         </footer>
-      </div>
-    </>
-  )
-}
+    </div>
+
+    <script>
+        // Language content
+        const content = {
+            en: {
+                title: 'Learning Support Volunteers',
+                nav: ['Home', 'About Us', 'Activities', 'Join Us', 'Contact'],
+                hero: {
+                    title: 'Supporting Foreign Residents in Japan',
+                    subtitle: 'Connecting volunteers and learners in a warm community',
+                    supportButton: 'I want support',
+                    volunteerButton: 'I want to volunteer'
+                },
+                about: {
+                    title: 'About Us',
+                    description: 'We support foreign residents in Japan through learning assistance and cultural exchange, helping them live comfortably. Our experienced volunteers conduct various activities including Japanese language learning, life consultation, and cultural exchange events.'
+                },
+                activities: {
+                    title: 'Activities',
+                    subtitle: 'Our Main Activities'
+                },
+                join: {
+                    title: 'Join Us',
+                    subtitle: 'Choose the participation method that suits you',
+                    support: {
+                        title: 'For Those Who Want Support',
+                        description: 'We provide various support including Japanese language learning and life consultation. Please feel free to contact us.',
+                        button: 'Apply for Support',
+                        features: [
+                            'Free Japanese language classes',
+                            'Life consultation services',
+                            'Cultural exchange event participation',
+                            'Friendship support'
+                        ]
+                    },
+                    volunteer: {
+                        title: 'For Those Who Want to Join as Volunteers',
+                        description: 'Would you like to support foreigners using your experience and skills? There are new encounters and learning opportunities.',
+                        button: 'Apply as Volunteer',
+                        features: [
+                            'Activity as Japanese language teacher',
+                            'Cultural exchange event planning',
+                            'Life consultation support',
+                            'Community building'
+                        ]
+                    }
+                },
+                contact: {
+                    title: 'Contact Us',
+                    subtitle: 'Please feel free to contact us',
+                    form: {
+                        name: 'Name',
+                        email: 'Email',
+                        message: 'Message',
+                        type: 'Inquiry Type',
+                        submit: 'Send Message',
+                        typeOptions: [
+                            { value: 'support', label: 'I want support' },
+                            { value: 'volunteer', label: 'I want to volunteer' }
+                        ]
+                    },
+                    placeholder: {
+                        name: 'Enter your name',
+                        email: 'example@email.com',
+                        message: 'Enter your message'
+                    }
+                },
+                footer: {
+                    contact: 'Contact',
+                    social: 'Social Media',
+                    description: 'A volunteer group supporting foreign residents in Japan.',
+                    copyright: '© 2024 Learning Support Volunteers. All rights reserved.'
+                },
+                misc: {
+                    communityPhoto: 'Community Photo',
+                    groupActivity: 'Group Activity Photo',
+                    placeholder: '(Placeholder)'
+                }
+            },
+            zh: {
+                title: '学习支援志愿者',
+                nav: ['首页', '关于我们', '活动内容', '加入我们', '联系我们'],
+                hero: {
+                    title: '支持在日外国人',
+                    subtitle: '连接志愿者和学习者的温暖社区',
+                    supportButton: '我需要帮助',
+                    volunteerButton: '我想成为志愿者'
+                },
+                about: {
+                    title: '关于我们',
+                    description: '我们通过学习支援和文化交流来支持在日外国人，帮助他们舒适地生活。我们经验丰富的志愿者开展各种活动，包括日语学习、生活咨询和文化交流活动。'
+                },
+                activities: {
+                    title: '活动内容',
+                    subtitle: '我们的主要活动'
+                },
+                join: {
+                    title: '加入我们',
+                    subtitle: '选择适合您的参与方式',
+                    support: {
+                        title: '需要帮助的人',
+                        description: '我们提供各种支持，包括日语学习和生活咨询。请随时联系我们。',
+                        button: '申请帮助',
+                        features: [
+                            '免费日语课程',
+                            '生活咨询服务',
+                            '文化交流活动参与',
+                            '交友支持'
+                        ]
+                    },
+                    volunteer: {
+                        title: '想成为志愿者的人',
+                        description: '您想利用您的经验和技能来支持外国人吗？这里有新的相遇和学习机会。',
+                        button: '申请成为志愿者',
+                        features: [
+                            '作为日语教师活动',
+                            '文化交流活动策划',
+                            '生活咨询支持',
+                            '社区建设'
+                        ]
+                    }
+                },
+                contact: {
+                    title: '联系我们',
+                    subtitle: '请随时联系我们',
+                    form: {
+                        name: '姓名',
+                        email: '邮箱',
+                        message: '留言',
+                        type: '咨询类型',
+                        submit: '发送消息',
+                        typeOptions: [
+                            { value: 'support', label: '我需要帮助' },
+                            { value: 'volunteer', label: '我想成为志愿者' }
+                        ]
+                    },
+                    placeholder: {
+                        name: '请输入您的姓名',
+                        email: 'example@email.com',
+                        message: '请输入您的留言'
+                    }
+                },
+                footer: {
+                    contact: '联系我们',
+                    social: '社交媒体',
+                    description: '支持在日外国人的志愿者团体。',
+                    copyright: '© 2024 学习支援志愿者. All rights reserved.'
+                },
+                misc: {
+                    communityPhoto: '社区照片',
+                    groupActivity: '团体活动照片',
+                    placeholder: '（占位符）'
+                }
+            },
+            fr: {
+                title: 'Bénévoles de Soutien à l\'Apprentissage',
+                nav: ['Accueil', 'À Propos', 'Activités', 'Rejoignez-nous', 'Contact'],
+                hero: {
+                    title: 'Soutenir les Résidents Étrangers au Japon',
+                    subtitle: 'Connecter les bénévoles et les apprenants dans une communauté chaleureuse',
+                    supportButton: 'Je veux du soutien',
+                    volunteerButton: 'Je veux être bénévole'
+                },
+                about: {
+                    title: 'À Propos de Nous',
+                    description: 'Nous soutenons les résidents étrangers au Japon par l\'assistance à l\'apprentissage et l\'échange culturel, les aidant à vivre confortablement. Nos bénévoles expérimentés mènent diverses activités incluant l\'apprentissage du japonais, les consultations de vie et les événements d\'échange culturel.'
+                },
+                activities: {
+                    title: 'Activités',
+                    subtitle: 'Nos Activités Principales'
+                },
+                join: {
+                    title: 'Rejoignez-nous',
+                    subtitle: 'Choisissez la méthode de participation qui vous convient',
+                    support: {
+                        title: 'Pour ceux qui veulent du soutien',
+                        description: 'Nous fournissons divers soutiens incluant l\'apprentissage du japonais et les consultations de vie. N\'hésitez pas à nous contacter.',
+                        button: 'Demander du soutien',
+                        features: [
+                            'Cours de japonais gratuits',
+                            'Services de consultation de vie',
+                            'Participation aux événements d\'échange culturel',
+                            'Soutien pour se faire des amis'
+                        ]
+                    },
+                    volunteer: {
+                        title: 'Pour ceux qui veulent rejoindre comme bénévoles',
+                        description: 'Voulez-vous soutenir les étrangers en utilisant votre expérience et vos compétences ? Il y a de nouvelles rencontres et opportunités d\'apprentissage.',
+                        button: 'Postuler comme bénévole',
+                        features: [
+                            'Activité comme professeur de japonais',
+                            'Planification d\'événements d\'échange culturel',
+                            'Soutien aux consultations de vie',
+                            'Construction de communauté'
+                        ]
+                    }
+                },
+                contact: {
+                    title: 'Contactez-nous',
+                    subtitle: 'N\'hésitez pas à nous contacter',
+                    form: {
+                        name: 'Nom',
+                        email: 'Email',
+                        message: 'Message',
+                        type: 'Type de demande',
+                        submit: 'Envoyer le message',
+                        typeOptions: [
+                            { value: 'support', label: 'Je veux du soutien' },
+                            { value: 'volunteer', label: 'Je veux être bénévole' }
+                        ]
+                    },
+                    placeholder: {
+                        name: 'Entrez votre nom',
+                        email: 'example@email.com',
+                        message: 'Entrez votre message'
+                    }
+                },
+                footer: {
+                    contact: 'Contact',
+                    social: 'Médias Sociaux',
+                    description: 'Un groupe de bénévoles soutenant les résidents étrangers au Japon.',
+                    copyright: '© 2024 Bénévoles de Soutien à l\'Apprentissage. Tous droits réservés.'
+                },
+                misc: {
+                    communityPhoto: 'Photo de la Communauté',
+                    groupActivity: 'Photo d\'Activité de Groupe',
+                    placeholder: '(Espace réservé)'
+                }
+            },
+            de: {
+                title: 'Lernunterstützungs-Freiwillige',
+                nav: ['Startseite', 'Über Uns', 'Aktivitäten', 'Mitmachen', 'Kontakt'],
+                hero: {
+                    title: 'Unterstützung Ausländischer Einwohner in Japan',
+                    subtitle: 'Freiwillige und Lernende in einer warmen Gemeinschaft verbinden',
+                    supportButton: 'Ich brauche Unterstützung',
+                    volunteerButton: 'Ich möchte Freiwilliger werden'
+                },
+                about: {
+                    title: 'Über Uns',
+                    description: 'Wir unterstützen ausländische Einwohner in Japan durch Lernhilfe und kulturellen Austausch und helfen ihnen, komfortabel zu leben. Unsere erfahrenen Freiwilligen führen verschiedene Aktivitäten durch, einschließlich Japanischlernen, Lebensberatung und kulturelle Austauschveranstaltungen.'
+                },
+                activities: {
+                    title: 'Aktivitäten',
+                    subtitle: 'Unsere Hauptaktivitäten'
+                },
+                join: {
+                    title: 'Mitmachen',
+                    subtitle: 'Wählen Sie die Teilnahmemethode, die zu Ihnen passt',
+                    support: {
+                        title: 'Für diejenigen, die Unterstützung wollen',
+                        description: 'Wir bieten verschiedene Unterstützungen einschließlich Japanischlernen und Lebensberatung. Bitte zögern Sie nicht, uns zu kontaktieren.',
+                        button: 'Unterstützung beantragen',
+                        features: [
+                            'Kostenlose Japanischkurse',
+                            'Lebensberatungsdienste',
+                            'Teilnahme an kulturellen Austauschveranstaltungen',
+                            'Freundschaftsunterstützung'
+                        ]
+                    },
+                    volunteer: {
+                        title: 'Für diejenigen, die als Freiwillige mitmachen möchten',
+                        description: 'Möchten Sie Ausländer mit Ihrer Erfahrung und Ihren Fähigkeiten unterstützen? Es gibt neue Begegnungen und Lernmöglichkeiten.',
+                        button: 'Als Freiwilliger bewerben',
+                        features: [
+                            'Aktivität als Japanischlehrer',
+                            'Planung kultureller Austauschveranstaltungen',
+                            'Lebensberatungsunterstützung',
+                            'Gemeinschaftsaufbau'
+                        ]
+                    }
+                },
+                contact: {
+                    title: 'Kontakt',
+                    subtitle: 'Bitte zögern Sie nicht, uns zu kontaktieren',
+                    form: {
+                        name: 'Name',
+                        email: 'E-Mail',
+                        message: 'Nachricht',
+                        type: 'Anfrageart',
+                        submit: 'Nachricht senden',
+                        typeOptions: [
+                            { value: 'support', label: 'Ich brauche Unterstützung' },
+                            { value: 'volunteer', label: 'Ich möchte Freiwilliger werden' }
+                        ]
+                    },
+                    placeholder: {
+                        name: 'Geben Sie Ihren Namen ein',
+                        email: 'example@email.com',
+                        message: 'Geben Sie Ihre Nachricht ein'
+                    }
+                },
+                footer: {
+                    contact: 'Kontakt',
+                    social: 'Soziale Medien',
+                    description: 'Eine Freiwilligengruppe, die ausländische Einwohner in Japan unterstützt.',
+                    copyright: '© 2024 Lernunterstützungs-Freiwillige. Alle Rechte vorbehalten.'
+                },
+                misc: {
+                    communityPhoto: 'Gemeinschaftsfoto',
+                    groupActivity: 'Gruppenaktivitätsfoto',
+                    placeholder: '(Platzhalter)'
+                }
+            }
+        };
+
+        // Current language state
+        let currentLanguage = 'en';
+
+        // Update content based on language
+        function updateContent(language) {
+            currentLanguage = language;
+            const langContent = content[language] || content.en;
+            
+            // Update title
+            document.getElementById('site-title').textContent = langContent.title;
+            document.title = langContent.title;
+            
+            // Update navigation
+            const navItems = document.querySelectorAll('#main-nav a');
+            navItems.forEach((item, index) => {
+                if (langContent.nav[index]) {
+                    item.textContent = langContent.nav[index];
+                }
+            });
+            
+            // Update mobile navigation
+            const mobileNavItems = document.querySelectorAll('#mobile-menu a');
+            mobileNavItems.forEach((item, index) => {
+                if (langContent.nav[index]) {
+                    item.textContent = langContent.nav[index];
+                }
+            });
+            
+            // Update hero section
+            document.getElementById('hero-title').textContent = langContent.hero.title;
+            document.getElementById('hero-subtitle').textContent = langContent.hero.subtitle;
+            document.getElementById('support-button').textContent = langContent.hero.supportButton;
+            document.getElementById('volunteer-button').textContent = langContent.hero.volunteerButton;
+            
+            // Update about section
+            document.getElementById('about-title').textContent = langContent.about.title;
+            document.getElementById('about-description').textContent = langContent.about.description;
+            
+            // Update activities section
+            document.getElementById('activities-title').textContent = langContent.activities.title;
+            document.getElementById('activities-subtitle').textContent = langContent.activities.subtitle;
+            
+            // Update join section
+            document.getElementById('join-title').textContent = langContent.join.title;
+            document.getElementById('join-subtitle').textContent = langContent.join.subtitle;
+            document.getElementById('support-card-title').textContent = langContent.join.support.title;
+            document.getElementById('support-card-description').textContent = langContent.join.support.description;
+            document.getElementById('support-apply-button').textContent = langContent.join.support.button;
+            document.getElementById('volunteer-card-title').textContent = langContent.join.volunteer.title;
+            document.getElementById('volunteer-card-description').textContent = langContent.join.volunteer.description;
+            document.getElementById('volunteer-apply-button').textContent = langContent.join.volunteer.button;
+            
+            // Update support features
+            const supportFeatures = document.querySelectorAll('#support-features li');
+            supportFeatures.forEach((item, index) => {
+                if (langContent.join.support.features[index]) {
+                    item.innerHTML = `<span class="text-green-500 mr-2">✓</span>${langContent.join.support.features[index]}`;
+                }
+            });
+            
+            // Update volunteer features
+            const volunteerFeatures = document.querySelectorAll('#volunteer-features li');
+            volunteerFeatures.forEach((item, index) => {
+                if (langContent.join.volunteer.features[index]) {
+                    item.innerHTML = `<span class="text-green-500 mr-2">✓</span>${langContent.join.volunteer.features[index]}`;
+                }
+            });
+            
+            // Update contact section
+            document.getElementById('contact-title').textContent = langContent.contact.title;
+            document.getElementById('contact-subtitle').textContent = langContent.contact.subtitle;
+            document.getElementById('name-label').textContent = langContent.contact.form.name;
+            document.getElementById('email-label').textContent = langContent.contact.form.email;
+            document.getElementById('message-label').textContent = langContent.contact.form.message;
+            document.getElementById('type-label').textContent = langContent.contact.form.type;
+            document.getElementById('submit-button').textContent = langContent.contact.form.submit;
+            
+            // Update form placeholders
+            document.getElementById('name-input').placeholder = langContent.contact.placeholder.name;
+            document.getElementById('email-input').placeholder = langContent.contact.placeholder.email;
+            document.getElementById('message-input').placeholder = langContent.contact.placeholder.message;
+            
+            // Update form options
+            const typeOptions = document.querySelectorAll('#type-select option');
+            typeOptions.forEach((option, index) => {
+                if (langContent.contact.form.typeOptions[index]) {
+                    option.textContent = langContent.contact.form.typeOptions[index].label;
+                    option.value = langContent.contact.form.typeOptions[index].value;
+                }
+            });
+            
+            // Update footer
+            document.getElementById('footer-title').textContent = langContent.title;
+            document.getElementById('footer-description').textContent = langContent.footer.description;
+            document.getElementById('footer-contact').textContent = langContent.footer.contact;
+            document.getElementById('footer-social').textContent = langContent.footer.social;
+            document.getElementById('copyright').textContent = langContent.footer.copyright;
+            
+            // Update misc elements
+            document.getElementById('community-photo').textContent = langContent.misc.communityPhoto;
+            document.getElementById('placeholder-text').textContent = langContent.misc.placeholder;
+            document.getElementById('group-activity').textContent = langContent.misc.groupActivity;
+            document.getElementById('group-placeholder').textContent = langContent.misc.placeholder;
+        }
+
+        // Initialize with English
+        updateContent('en');
+
+        // Language selector event listeners
+        document.getElementById('language-selector').addEventListener('change', function(e) {
+            updateContent(e.target.value);
+            document.getElementById('mobile-language-selector').value = e.target.value;
+        });
+
+        document.getElementById('mobile-language-selector').addEventListener('change', function(e) {
+            updateContent(e.target.value);
+            document.getElementById('language-selector').value = e.target.value;
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
