@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Support Volunteers</title>
+    <title>学習支援ボランティア</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .section-padding {
@@ -66,22 +66,23 @@
                             <span class="text-white font-bold text-lg">LS</span>
                         </div>
                         <span class="ml-3 text-xl font-semibold text-gray-900" id="site-title">
-                            Learning Support Volunteers
+                            学習支援ボランティア
                         </span>
                     </div>
 
                     <!-- Desktop Navigation -->
                     <nav class="hidden md:flex space-x-8 desktop-nav" id="main-nav">
-                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">About Us</a>
-                        <a href="#activities" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Activities</a>
-                        <a href="#join" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Join Us</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">ホーム</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">グループ紹介</a>
+                        <a href="#activities" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">活動内容</a>
+                        <a href="#join" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">参加方法</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">お問い合わせ</a>
                     </nav>
 
                     <!-- Language Switcher -->
                     <div class="flex items-center space-x-2">
                         <select id="language-selector" class="border border-gray-300 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="ja">日本語</option>
                             <option value="en">English</option>
                             <option value="zh">中文</option>
                             <option value="fr">Français</option>
@@ -102,13 +103,14 @@
                 <!-- Mobile Navigation -->
                 <div id="mobile-menu" class="md:hidden hidden">
                     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                        <a href="#home" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Home</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">About Us</a>
-                        <a href="#activities" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Activities</a>
-                        <a href="#join" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Join Us</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">Contact</a>
+                        <a href="#home" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">ホーム</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">グループ紹介</a>
+                        <a href="#activities" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">活動内容</a>
+                        <a href="#join" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">参加方法</a>
+                        <a href="#contact" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">お問い合わせ</a>
                         <div class="pt-4 pb-3 border-t border-gray-200">
                             <select id="mobile-language-selector" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="ja">日本語</option>
                                 <option value="en">English</option>
                                 <option value="zh">中文</option>
                                 <option value="fr">Français</option>
@@ -127,17 +129,17 @@
                     <!-- Content -->
                     <div class="text-center lg:text-left">
                         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" id="hero-title">
-                            Supporting Foreign Residents in Japan
+                            日本で暮らす外国人の皆さんをサポートします
                         </h1>
                         <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed" id="hero-subtitle">
-                            Connecting volunteers and learners in a warm community
+                            ボランティアと学習者をつなぐ、温かいコミュニティ
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                             <button class="btn-primary" id="support-button">
-                                I want support
+                                サポートを受けたい
                             </button>
                             <button class="btn-secondary" id="volunteer-button">
-                                I want to volunteer
+                                ボランティア参加したい
                             </button>
                         </div>
                     </div>
@@ -152,10 +154,10 @@
                                     </svg>
                                 </div>
                                 <p class="text-gray-600 text-lg font-medium" id="community-photo">
-                                    Community Photo
+                                    コミュニティの写真
                                 </p>
                                 <p class="text-gray-500 text-sm mt-2" id="placeholder-text">
-                                    (Placeholder)
+                                    （プレースホルダー）
                                 </p>
                             </div>
                         </div>
@@ -171,10 +173,10 @@
                     <!-- Content -->
                     <div class="space-y-6">
                         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="about-title">
-                            About Us
+                            私たちについて
                         </h2>
                         <p class="text-lg text-gray-700 leading-relaxed" id="about-description">
-                            We support foreign residents in Japan through learning assistance and cultural exchange, helping them live comfortably. Our experienced volunteers conduct various activities including Japanese language learning, life consultation, and cultural exchange events.
+                            私たちは、日本に住む外国人の皆さんが安心して暮らせるよう、学習支援と文化交流を通じてサポートしています。経験豊富なボランティアが、日本語学習、生活相談、文化交流イベントなど、様々な活動を行っています。
                         </p>
                     </div>
 
@@ -188,10 +190,10 @@
                                     </svg>
                                 </div>
                                 <p class="text-gray-600 font-medium" id="group-activity">
-                                    Group Activity Photo
+                                    グループ活動の写真
                                 </p>
                                 <p class="text-gray-500 text-sm mt-2" id="group-placeholder">
-                                    (Placeholder)
+                                    （プレースホルダー）
                                 </p>
                             </div>
                         </div>
@@ -205,10 +207,10 @@
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="activities-title">
-                        Activities
+                        活動内容
                     </h2>
                     <p class="text-xl text-gray-600" id="activities-subtitle">
-                        Our Main Activities
+                        私たちの主な活動
                     </p>
                 </div>
 
@@ -216,29 +218,29 @@
                     <div class="card hover:shadow-lg transition-shadow duration-300">
                         <div class="text-center">
                             <div class="text-4xl mb-4">📚</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Japanese Language Classes</h3>
-                            <p class="text-gray-600 leading-relaxed">We support Japanese language learning from beginner to advanced levels.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">日本語教室</h3>
+                            <p class="text-gray-600 leading-relaxed">初級から上級まで、レベルに合わせた日本語学習をサポートします。</p>
                         </div>
                     </div>
                     <div class="card hover:shadow-lg transition-shadow duration-300">
                         <div class="text-center">
                             <div class="text-4xl mb-4">🎎</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Cultural Exchange Events</h3>
-                            <p class="text-gray-600 leading-relaxed">We hold fun events to experience Japanese culture and share each other's cultures.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">文化交流イベント</h3>
+                            <p class="text-gray-600 leading-relaxed">日本の文化を体験し、お互いの文化を共有する楽しいイベントを開催しています。</p>
                         </div>
                     </div>
                     <div class="card hover:shadow-lg transition-shadow duration-300">
                         <div class="text-center">
                             <div class="text-4xl mb-4">🏠</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Life Consultation</h3>
-                            <p class="text-gray-600 leading-relaxed">We provide consultation for daily life issues and administrative procedures.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">生活相談</h3>
+                            <p class="text-gray-600 leading-relaxed">日常生活での困りごとや、行政手続きについて相談に乗ります。</p>
                         </div>
                     </div>
                     <div class="card hover:shadow-lg transition-shadow duration-300">
                         <div class="text-center">
                             <div class="text-4xl mb-4">🤝</div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Making Friends</h3>
-                            <p class="text-gray-600 leading-relaxed">We provide opportunities for foreigners and Japanese people living in the same area to interact.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">友達作り</h3>
+                            <p class="text-gray-600 leading-relaxed">同じ地域に住む外国人の方々と日本人が交流できる場を提供します。</p>
                         </div>
                     </div>
                 </div>
@@ -250,10 +252,10 @@
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="join-title">
-                        Join Us
+                        参加方法
                     </h2>
                     <p class="text-xl text-gray-600" id="join-subtitle">
-                        Choose the participation method that suits you
+                        あなたに合った参加方法を選んでください
                     </p>
                 </div>
 
@@ -261,62 +263,62 @@
                     <!-- Support Card -->
                     <div class="card">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-4" id="support-card-title">
-                            For Those Who Want Support
+                            サポートを受けたい方
                         </h3>
                         <p class="text-gray-600 mb-6" id="support-card-description">
-                            We provide various support including Japanese language learning and life consultation. Please feel free to contact us.
+                            日本語学習や生活相談など、様々なサポートを提供しています。お気軽にお問い合わせください。
                         </p>
                         <ul class="space-y-2 mb-6" id="support-features">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Free Japanese language classes
+                                無料の日本語教室
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Life consultation services
+                                生活相談サービス
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Cultural exchange event participation
+                                文化交流イベント参加
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Friendship support
+                                友達作りサポート
                             </li>
                         </ul>
                         <button class="btn-primary w-full" id="support-apply-button">
-                            Apply for Support
+                            サポートを申し込む
                         </button>
                     </div>
 
                     <!-- Volunteer Card -->
                     <div class="card">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-4" id="volunteer-card-title">
-                            For Those Who Want to Join as Volunteers
+                            ボランティアとして参加したい方
                         </h3>
                         <p class="text-gray-600 mb-6" id="volunteer-card-description">
-                            Would you like to support foreigners using your experience and skills? There are new encounters and learning opportunities.
+                            経験やスキルを活かして、外国人の方々をサポートしませんか？新しい出会いと学びがあります。
                         </p>
                         <ul class="space-y-2 mb-6" id="volunteer-features">
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Activity as Japanese language teacher
+                                日本語教師として活動
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Cultural exchange event planning
+                                文化交流イベント企画
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Life consultation support
+                                生活相談サポート
                             </li>
                             <li class="flex items-center">
                                 <span class="text-green-500 mr-2">✓</span>
-                                Community building
+                                コミュニティ作り
                             </li>
                         </ul>
                         <button class="btn-secondary w-full" id="volunteer-apply-button">
-                            Apply as Volunteer
+                            ボランティアに申し込む
                         </button>
                     </div>
                 </div>
@@ -328,10 +330,10 @@
             <div class="max-w-4xl mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" id="contact-title">
-                        Contact Us
+                        お問い合わせ
                     </h2>
                     <p class="text-xl text-gray-600" id="contact-subtitle">
-                        Please feel free to contact us
+                        お気軽にお問い合わせください
                     </p>
                 </div>
 
@@ -340,34 +342,34 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2" id="name-label">
-                                    Name
+                                    お名前
                                 </label>
-                                <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="name-input" placeholder="Enter your name">
+                                <input type="text" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="name-input" placeholder="お名前を入力してください">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2" id="email-label">
-                                    Email
+                                    メールアドレス
                                 </label>
                                 <input type="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="email-input" placeholder="example@email.com">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2" id="type-label">
-                                Inquiry Type
+                                お問い合わせ種別
                             </label>
                             <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="type-select">
-                                <option value="support" id="support-option">I want support</option>
-                                <option value="volunteer" id="volunteer-option">I want to volunteer</option>
+                                <option value="support" id="support-option">サポート希望</option>
+                                <option value="volunteer" id="volunteer-option">ボランティア希望</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2" id="message-label">
-                                Message
+                                メッセージ
                             </label>
-                            <textarea rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="message-input" placeholder="Enter your message"></textarea>
+                            <textarea rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="message-input" placeholder="お問い合わせ内容を入力してください"></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full" id="submit-button">
-                            Send Message
+                            送信する
                         </button>
                     </form>
                 </div>
@@ -385,18 +387,18 @@
                                 <span class="text-white font-bold text-sm">LS</span>
                             </div>
                             <span class="text-xl font-semibold" id="footer-title">
-                                Learning Support Volunteers
+                                学習支援ボランティア
                             </span>
                         </div>
                         <p class="text-gray-300 leading-relaxed" id="footer-description">
-                            A volunteer group supporting foreign residents in Japan.
+                            日本に住む外国人の皆さんをサポートするボランティアグループです。
                         </p>
                     </div>
 
                     <!-- Contact -->
                     <div>
                         <h3 class="text-lg font-semibold mb-4" id="footer-contact">
-                            Contact
+                            お問い合わせ
                         </h3>
                         <div class="space-y-2">
                             <div class="flex items-center">
@@ -413,7 +415,7 @@
                     <!-- Social Media -->
                     <div>
                         <h3 class="text-lg font-semibold mb-4" id="footer-social">
-                            Social Media
+                            ソーシャルメディア
                         </h3>
                         <div class="flex space-x-4">
                             <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
@@ -438,7 +440,7 @@
                 <!-- Copyright -->
                 <div class="border-t border-gray-800 mt-8 pt-8 text-center">
                     <p class="text-gray-400" id="copyright">
-                        © 2024 Learning Support Volunteers. All rights reserved.
+                        © 2024 学習支援ボランティア. All rights reserved.
                     </p>
                 </div>
             </div>
@@ -448,6 +450,81 @@
     <script>
         // Language content
         const content = {
+            ja: {
+                title: '学習支援ボランティア',
+                nav: ['ホーム', 'グループ紹介', '活動内容', '参加方法', 'お問い合わせ'],
+                hero: {
+                    title: '日本で暮らす外国人の皆さんをサポートします',
+                    subtitle: 'ボランティアと学習者をつなぐ、温かいコミュニティ',
+                    supportButton: 'サポートを受けたい',
+                    volunteerButton: 'ボランティア参加したい'
+                },
+                about: {
+                    title: '私たちについて',
+                    description: '私たちは、日本に住む外国人の皆さんが安心して暮らせるよう、学習支援と文化交流を通じてサポートしています。経験豊富なボランティアが、日本語学習、生活相談、文化交流イベントなど、様々な活動を行っています。'
+                },
+                activities: {
+                    title: '活動内容',
+                    subtitle: '私たちの主な活動'
+                },
+                join: {
+                    title: '参加方法',
+                    subtitle: 'あなたに合った参加方法を選んでください',
+                    support: {
+                        title: 'サポートを受けたい方',
+                        description: '日本語学習や生活相談など、様々なサポートを提供しています。お気軽にお問い合わせください。',
+                        button: 'サポートを申し込む',
+                        features: [
+                            '無料の日本語教室',
+                            '生活相談サービス',
+                            '文化交流イベント参加',
+                            '友達作りサポート'
+                        ]
+                    },
+                    volunteer: {
+                        title: 'ボランティアとして参加したい方',
+                        description: '経験やスキルを活かして、外国人の方々をサポートしませんか？新しい出会いと学びがあります。',
+                        button: 'ボランティアに申し込む',
+                        features: [
+                            '日本語教師として活動',
+                            '文化交流イベント企画',
+                            '生活相談サポート',
+                            'コミュニティ作り'
+                        ]
+                    }
+                },
+                contact: {
+                    title: 'お問い合わせ',
+                    subtitle: 'お気軽にお問い合わせください',
+                    form: {
+                        name: 'お名前',
+                        email: 'メールアドレス',
+                        message: 'メッセージ',
+                        type: 'お問い合わせ種別',
+                        submit: '送信する',
+                        typeOptions: [
+                            { value: 'support', label: 'サポート希望' },
+                            { value: 'volunteer', label: 'ボランティア希望' }
+                        ]
+                    },
+                    placeholder: {
+                        name: 'お名前を入力してください',
+                        email: 'example@email.com',
+                        message: 'お問い合わせ内容を入力してください'
+                    }
+                },
+                footer: {
+                    contact: 'お問い合わせ',
+                    social: 'ソーシャルメディア',
+                    description: '日本に住む外国人の皆さんをサポートするボランティアグループです。',
+                    copyright: '© 2024 学習支援ボランティア. All rights reserved.'
+                },
+                misc: {
+                    communityPhoto: 'コミュニティの写真',
+                    groupActivity: 'グループ活動の写真',
+                    placeholder: '（プレースホルダー）'
+                }
+            },
             en: {
                 title: 'Learning Support Volunteers',
                 nav: ['Home', 'About Us', 'Activities', 'Join Us', 'Contact'],
@@ -751,12 +828,12 @@
         };
 
         // Current language state
-        let currentLanguage = 'en';
+        let currentLanguage = 'ja';
 
         // Update content based on language
         function updateContent(language) {
             currentLanguage = language;
-            const langContent = content[language] || content.en;
+            const langContent = content[language] || content.ja;
             
             // Update title
             document.getElementById('site-title').textContent = langContent.title;
@@ -855,8 +932,8 @@
             document.getElementById('group-placeholder').textContent = langContent.misc.placeholder;
         }
 
-        // Initialize with English
-        updateContent('en');
+        // Initialize with Japanese
+        updateContent('ja');
 
         // Language selector event listeners
         document.getElementById('language-selector').addEventListener('change', function(e) {
